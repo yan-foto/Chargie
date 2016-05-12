@@ -21,7 +21,8 @@
 
         <service
             android:name=".ChargeService"
-            android:enabled="true">
+            android:enabled="true"
+            android:process=":chargie">
         </service>
 
         <receiver
