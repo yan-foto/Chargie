@@ -3,6 +3,7 @@ package com.quaintous.chargie;
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.BatteryManager;
 import android.os.IBinder;
 import android.util.Log;
@@ -58,6 +59,8 @@ public class ChargeService extends Service {
         this.worker = new PowerLevelWorker();
         worker.start();
 
+        this.manageComponents();
+
         return START_STICKY;
     }
 
@@ -94,5 +97,18 @@ public class ChargeService extends Service {
         } else {
             return -1;
         }
+    }
+
+    private void manageComponents() {
+        SharedPreferences preferences = getSharedPreferences(MainActivity.SHARED_PREF_KEY, MODE_PRIVATE);
+
+        // Disable WiFi
+        // WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        // wifiManager.setWifiEnabled(false);
+
+        // Disable Bluetooth
+        // BluetoothManager bluetoothManager = (BluetoothManager) getApplicationContext().getSystemService(Context.BLUETOOTH_SERVICE);
+        // BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        // bluetoothAdapter.disable();
     }
 }
